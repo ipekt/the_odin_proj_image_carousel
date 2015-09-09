@@ -24,40 +24,53 @@ touch control possible
     currentElement.addClass('hide');
   };
 
-  var slider_control = function (argument) {
-    var current = $('.current');
-    current.removeClass('current')
+  var slider_control = function (target) {
+    var currentElement = $('.current');
+    currentElement.removeClass('current')
       .addClass('inactive');
+    target.addClass('current');
+
+    currentElement.removeClass('inactive');
+  };
+
+  var nextElement = function (arg1, arg2) {
+     var nextElement = $(arg1).next();
+      if (nextElement.length === 0) {
+        nextElement = $(arg2).first();
+      }
+    return nextElement;
+  };
+
+  var prevElement = function (arg1, arg2) {
+    var prevElement = $(arg1).prev();
+      if (prevElement.length === 0) {
+        prevElement = $(arg2).last();
+      }
+      console.log(prevElement);
+    return prevElement;
   };
 
 
   $(function () {
 
     $('.back').on('click', function() {
-      var prevElement = $('li.active').prev();
-      if (prevElement.length === 0) {
-        prevElement = $('li').last();
-      }
 
-      slide(prevElement);
-      slider_control();
+      slide(prevElement('li.active', '.img_list li'));
+      slider_control(prevElement('li.current', '.slider_control li'));
 
     });
 
     $('.forward').on('click', function() {
-      var nextElement = $('li.active').next();
-      if (nextElement.length === 0) {
-        nextElement = $('li').first();
-      }
 
-      slide(nextElement);
-         slider_control();
+      slide(nextElement('li.active', '.img_list  li'));
+      slider_control(nextElement('li.current', '.slider_control li'));
 
     });
 
-    // $('.slider_control_item').on('click', function() {
-    //   $(this).css('background-color', '#fff');
-    // });
+    $('.slider_control_item').on('click', function() {
+      var target = $(this).attr('data-imgref');
+      slide($(target));
+    });
 
   });
 

@@ -127,6 +127,7 @@ table {
   background-color: rgb(238, 238, 238);
   border: 1px solid #B2AAAA;
   border-radius: 50%;
+  cursor: pointer;
   width: 1em;
   height: 1em;
   margin-right: 0.25em;
