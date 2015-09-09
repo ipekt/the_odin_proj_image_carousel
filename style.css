@@ -50,40 +50,44 @@ table {
 /* End of reset*/
 
 .wrapper {
+  max-width: 100%;
   margin: 2em auto;
   width: 40em;
 }
-h1 {
-  font-size: 4em;
+
+.heading {
+  font-size: 2em;
   font-family: arial, sans-serif;
+  margin-bottom: 0.5em;
+  text-align: center;
 }
+
 .back, .forward {
-  position: relative;
-  
-  font-size: 3em;
-  color: #fff;
-  border: 0;
   background: none;
+  border: 0;
+  color: #fff;
+  font-size: 3em;
+  display: inline-block;
+  position: relative;
+  top: 80px;
 }
 .back {
-  top: 138px;
   z-index: 1;
-  left: -3px;
 }
 .back:hover, .forward:hover {
   background-color: rgba(255, 255, 255, 0.50);
 }
 .forward {
-  top: 80px;
-  right: -555px;
+  float: right;
 }
-.img_list {
-
+.img_slider {
+  height: 220px;
 }
-
 .img_list img {
-  position: absolute;
   max-width: 100%;
+  height: 220px;
+  position: absolute;
+  width: 40em;
 }
 
 .hide {
@@ -107,7 +111,37 @@ h1 {
    0%  { opacity: 1; } 
   100% { opacity: 0; }
 }
+
 .fadeOut {
   animation: slideOut 2s linear;
   animation-fill-mode: forwards;
+}
+
+.slider_control {
+  clear: both;
+  text-align: center;
+  margin: 0 auto;
+}
+.slider_control_item {
+  display: inline-block;
+  background-color: rgb(238, 238, 238);
+  border: 1px solid #B2AAAA;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.25em;
+  margin-top: 0.5em;
+}
+.slider_control_item:hover {
+  background-color: #fff;
+}
+.clear {
+  clear: both;
+}
+
+.current {
+  background-color: red;
+}
+.inactive {
+  background-color: #fff;
 }

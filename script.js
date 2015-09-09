@@ -1,7 +1,7 @@
-$(function () {
+(function() {
 
 /*
-
+TO DO
 one appear others hidden
 set timeout 500 it changes
 change is smooth
@@ -18,38 +18,48 @@ touch control possible
      var currentElement = $('.active');
     currentElement.removeClass('active fadeIn')
         .addClass('fadeOut');
-        target.addClass('active fadeIn');
-    currentElement.removeClass('hide fadeOut');
-    setTimeout(function() {
-      currentElement.addClass('hide');
-    }, 2000);
+    target.addClass('active fadeIn');
 
+    currentElement.removeClass('hide fadeOut');
+    currentElement.addClass('hide');
   };
 
-  $('.back').on('click', function() {
-    var prevElement = $('li.active').prev();
-    if (prevElement.length === 0) {
-      prevElement = $('li').last();
-    }
+  var slider_control = function (argument) {
+    var current = $('.current');
+    current.removeClass('current')
+      .addClass('inactive');
+  };
 
-    slide(prevElement);
+
+  $(function () {
+
+    $('.back').on('click', function() {
+      var prevElement = $('li.active').prev();
+      if (prevElement.length === 0) {
+        prevElement = $('li').last();
+      }
+
+      slide(prevElement);
+      slider_control();
+
+    });
+
+    $('.forward').on('click', function() {
+      var nextElement = $('li.active').next();
+      if (nextElement.length === 0) {
+        nextElement = $('li').first();
+      }
+
+      slide(nextElement);
+         slider_control();
+
+    });
+
+    // $('.slider_control_item').on('click', function() {
+    //   $(this).css('background-color', '#fff');
+    // });
 
   });
 
-  $('.forward').on('click', function() {
-    var nextElement = $('li.active').next();
-    if (nextElement.length === 0) {
-      nextElement = $('li').first();
-    }
-
-    slide(nextElement);
-  });
-
-
-
-});
-
-
-
-
+})();
 
